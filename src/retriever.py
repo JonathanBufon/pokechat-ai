@@ -1,0 +1,1 @@
+"""Recuperar documentos relevantes sem gerar respostas."""
