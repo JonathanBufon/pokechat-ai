@@ -5,6 +5,7 @@
 [![OpenAI][openai-shield]][openai-url]
 [![Issues][issues-shield]][issues-url]
 [![Project][project-shield]][project-url]
+[![MIT License][license-shield]][license-url]
 
 <br />
 <div align="center">
@@ -37,6 +38,7 @@
     <li><a href="#organizacao-do-projeto">Organização do projeto</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#estado-atual">Estado atual</a></li>
+    <li><a href="#licenca">Licença</a></li>
     <li><a href="#referencias-e-creditos">Referências e créditos</a></li>
   </ol>
 </details>
@@ -344,6 +346,14 @@ Comandos de instalação e uso serão adicionados quando a fundação e os entry
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
+## Licença
+
+O código criado neste projeto é distribuído sob a **MIT License**. Consulte o arquivo [LICENSE][license-url] para conhecer os termos completos.
+
+A licença do projeto não concede direitos sobre nomes, personagens, imagens ou marcas da franquia Pokémon, nem substitui os termos aplicáveis às fontes e dependências de terceiros.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
 ## Referências e créditos
 
 - [PokeAPI documentation][pokeapi-docs-url]
@@ -369,6 +379,8 @@ Pokémon e nomes relacionados pertencem aos seus respectivos proprietários. Est
 [issues-url]: https://github.com/JonathanBufon/pokechat-ai/issues
 [project-shield]: https://img.shields.io/badge/GitHub_Project-Backlog-0969DA?style=for-the-badge&logo=github
 [project-url]: https://github.com/users/JonathanBufon/projects/1
+[license-shield]: https://img.shields.io/github/license/JonathanBufon/pokechat-ai.svg?style=for-the-badge
+[license-url]: https://github.com/JonathanBufon/pokechat-ai/blob/main/LICENSE
 [roadmap-url]: https://github.com/JonathanBufon/pokechat-ai/issues/1
 [first-task-url]: https://github.com/JonathanBufon/pokechat-ai/issues/2
 [pokeapi-url]: https://pokeapi.co/
