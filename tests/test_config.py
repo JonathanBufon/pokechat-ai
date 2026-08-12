@@ -61,3 +61,9 @@ def test_load_settings_from_env_file(monkeypatch, tmp_path):
     assert settings.retriever_top_k == 89, (
         "retriever_top_k is different from the .env file"
     )
+
+
+# No próximo cenário, será testada a ausência da variável `OPENAI_API_KEY`.
+# O teste deverá confirmar que a função `load_settings()` lança um `ValueError` contendo a mensagem esperada.
+# Para realizar essa validação, utilizaremos o `pytest.raises`,
+# que desempenha um papel equivalente ao `expectException()` do PHPUnit.
