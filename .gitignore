@@ -13,6 +13,7 @@ data/raw/
 
 # IDE
 .idea/
+.opencode/
 .vscode/
 *.swp
 
