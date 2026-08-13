@@ -1,14 +1,13 @@
 from pathlib import Path
 
+import pytest
+
 from src import config
 
 
 def test_load_settings_uses_defaults(monkeypatch, tmp_path):
+    clear_environment_variables(monkeypatch)
     monkeypatch.setenv("OPENAI_API_KEY", "test_api_key")
-    monkeypatch.delenv("OPENAI_CHAT_MODEL", raising=False)
-    monkeypatch.delenv("OPENAI_EMBEDDING_MODEL", raising=False)
-    monkeypatch.delenv("CHROMA_PERSIST_DIRECTORY", raising=False)
-    monkeypatch.delenv("RETRIEVER_TOP_K", raising=False)
 
     settings = config.load_settings(tmp_path / ".env")
     assert settings.openai_api_key == "test_api_key", (
@@ -29,11 +28,7 @@ def test_load_settings_uses_defaults(monkeypatch, tmp_path):
 
 
 def test_load_settings_from_env_file(monkeypatch, tmp_path):
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
-    monkeypatch.delenv("OPENAI_CHAT_MODEL", raising=False)
-    monkeypatch.delenv("OPENAI_EMBEDDING_MODEL", raising=False)
-    monkeypatch.delenv("CHROMA_PERSIST_DIRECTORY", raising=False)
-    monkeypatch.delenv("RETRIEVER_TOP_K", raising=False)
+    clear_environment_variables(monkeypatch)
 
     env_file = tmp_path / ".env"
     env_file.write_text(
@@ -63,7 +58,27 @@ def test_load_settings_from_env_file(monkeypatch, tmp_path):
     )
 
 
-# No próximo cenário, será testada a ausência da variável `OPENAI_API_KEY`.
-# O teste deverá confirmar que a função `load_settings()` lança um `ValueError` contendo a mensagem esperada.
-# Para realizar essa validação, utilizaremos o `pytest.raises`,
-# que desempenha um papel equivalente ao `expectException()` do PHPUnit.
+def test_load_settings_fails_without_api_key(monkeypatch, tmp_path):
+    clear_environment_variables(monkeypatch)
+    with pytest.raises(ValueError, match="OPENAI_API_KEY is required."):
+        config.load_settings(tmp_path / ".env")
+
+
+@pytest.mark.parametrize("invalid_top_k", ["0", "-1", "invalid"])
+def test_load_settings_fails_with_invalid_top_k(monkeypatch, tmp_path, invalid_top_k):
+    clear_environment_variables(monkeypatch)
+    monkeypatch.setenv("OPENAI_API_KEY", "test_api_key")
+    monkeypatch.setenv("RETRIEVER_TOP_K", invalid_top_k)
+    with pytest.raises(
+        ValueError, match="RETRIEVER_TOP_K must be a positive integer."
+    ) as error:
+        config.load_settings(tmp_path / ".env")
+    assert "test_api_key" not in str(error.value)
+
+
+def clear_environment_variables(monkeypatch):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_CHAT_MODEL", raising=False)
+    monkeypatch.delenv("OPENAI_EMBEDDING_MODEL", raising=False)
+    monkeypatch.delenv("CHROMA_PERSIST_DIRECTORY", raising=False)
+    monkeypatch.delenv("RETRIEVER_TOP_K", raising=False)
