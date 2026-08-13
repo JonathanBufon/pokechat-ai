@@ -36,6 +36,7 @@
     <li><a href="#modelagem-do-conhecimento">Modelagem do conhecimento</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#organizacao-do-projeto">Organização do projeto</a></li>
+    <li><a href="#testes">Testes</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#estado-atual">Estado atual</a></li>
     <li><a href="#licenca">Licença</a></li>
@@ -304,6 +305,22 @@ Campos de organização:
 - **Status:** estado atual no fluxo de trabalho.
 
 Cada issue descreve contexto, objetivo pedagógico, tarefas, critérios de aceite, validação, dependências e uma pergunta de verificação. Apenas uma tarefa de implementação deve permanecer em `In Progress` por vez.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+## Testes
+
+Com o ambiente virtual ativo e as dependências instaladas, execute:
+
+```bash
+pytest
+```
+
+Organização:
+
+- `tests/unit/`: testes isolados, sem rede, OpenAI ou serviços externos.
+- `tests/integration/`: testes da colaboração entre componentes.
+- `tests/fixtures/pokeapi/`: respostas JSON reduzidas da PokéAPI usadas sem chamadas reais à rede.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
