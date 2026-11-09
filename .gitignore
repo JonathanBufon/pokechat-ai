@@ -5,12 +5,6 @@ venv/
 __pycache__/
 *.pyc
 
-# Vector store (regenerado pelo ingest)
-chroma_db/
-
-# Cache local da PokéAPI (opcional)
-data/raw/
-
 # IDE
 .idea/
 .opencode/
