@@ -1,1 +1,0 @@
-"""Construir ou atualizar a base vetorial."""
